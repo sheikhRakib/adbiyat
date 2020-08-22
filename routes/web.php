@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,8 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function(){
+    return redirect(route('article.index'));
+})->name('index');
+
+// Article Route Group
+Route::group(['prefix' => 'article'], function () {
+    Route::get('/', 'ArticleController@index')->name('article.index');
+    Route::get('/show', 'ArticleController@show')->name('article.show');
 });
 
 Auth::routes();
