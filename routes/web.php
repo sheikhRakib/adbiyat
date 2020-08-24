@@ -13,17 +13,20 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function(){
-    return redirect(route('article.index'));
-})->name('index');
-
-// Article Route Group
-Route::group(['prefix' => 'article'], function () {
-    Route::get('/', 'ArticleController@index')->name('article.index');
-    Route::get('/show', 'ArticleController@show')->name('article.show');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+/*
+ * Frontend Routes
+ * Namespaces indicate folder structure
+ */
+Route::group(['namespace' => 'Frontend', 'as' => 'frontend.'], function () {
+    require __DIR__.'/frontend/home.php';
+});
+
+/*
+ * Backend Routes
+ * Namespaces indicate folder structure
+ */
+Route::group(['namespace' => 'Backend','as' => 'backend.','middleware' => ['web','auth']], function () {
+      require __DIR__.'/backend/admin.php';
+});
