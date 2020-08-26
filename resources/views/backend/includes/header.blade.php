@@ -15,11 +15,11 @@
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <div class="image">
-                    <b class="pr-1">{{ auth()->user()->name }}</b>
-                    @if(auth()->user()->display_picture)
-                        <img width="30" src="{{asset('uploads/user/'.auth()->user()->display_picture)}}" class="img-circle elevation-2" alt="User Image">
+                    <b class="pr-1">{{ auth()->user()->fullname }}</b>
+                    @if(Auth::user()->display_picture)
+                        <img width="30" src="{{ asset('uploads/user/'.Auth::user()->display_picture) }}" class="img-circle elevation-2" alt="User Image">
                     @else
-                        <img width="30" src="{{ url('/uploads/img/profile.png') }}" class="img-circle elevation-2" alt="User Image">
+                        {{-- <img width="30" src="{{ url('/uploads/img/profile.png') }}" class="img-circle elevation-2" alt="User Image"> --}}
                     @endif
                 </div>
             </a>
