@@ -1,9 +1,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Company Logo -->
-    <a href="{{ route('backend.admin.dashboard') }}" class="brand-link">
-        <img src="{{ url('/uploads/img/logo.png') }}" alt="{{ env('APP_NAME','Adabiyat') }}"
-             class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">{{ env('APP_NAME','Adabiyat') }}</span>
+    <a href="{{ route('frontend.home') }}" class="brand-link">
+        <img src="{{ asset('/uploads/system/logo.svg') }}" alt="{{ env('APP_NAME','Adbiyat') }}" class="brand-image img-circle elevation-3">
+        <span class="brand-text font-weight-light">{{ env('APP_NAME','Adbiyat') }}</span>
     </a>
 
     <!-- Sidebar -->
