@@ -14,10 +14,10 @@ class CreateArticleVotesTable extends Migration
     public function up()
     {
         Schema::create('article_votes', function (Blueprint $table) {
+            $table->increments('id');
             $table->unsignedBigInteger('article_id');
             $table->unsignedBigInteger('voted_by');
             $table->boolean('vote');
-            
             $table->timestamps();
         });
     }

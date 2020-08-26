@@ -14,17 +14,17 @@ class CreateArticlesTable extends Migration
     public function up()
     {
         Schema::create('articles', function (Blueprint $table) {
-            $table->id();
-
+            $table->increments('id');
             $table->string('title');
             $table->mediumText('body');
-            
             $table->string('slug');
             $table->unsignedBigInteger('author_id');
-            $table->boolean('status')->default(false);
-            
-            $table->unsignedBigInteger('created_by')->nullable();
-            $table->unsignedBigInteger('deleted_by')->nullable();
+            $table->boolean('is_active')->default(false);
+            $table->tinyInteger('is_archive')->default(0);
+            $table->integer('created_by')->nullable();
+            $table->integer('updated_by')->nullable();
+            $table->integer('deleted_by')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

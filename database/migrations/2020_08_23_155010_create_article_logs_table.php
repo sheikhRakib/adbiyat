@@ -14,12 +14,10 @@ class CreateArticleLogsTable extends Migration
     public function up()
     {
         Schema::create('article_logs', function (Blueprint $table) {
-            $table->id();
-
+            $table->increments('id');
             $table->unsignedBigInteger('article_id');
             $table->string('action');
             $table->unsignedBigInteger('user_id');
-
             $table->timestamps();
         });
     }
