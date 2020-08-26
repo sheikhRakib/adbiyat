@@ -14,9 +14,9 @@ class CreateArticleUpdateInformationTable extends Migration
     public function up()
     {
         Schema::create('article_update_information', function (Blueprint $table) {
+            $table->increments('id');
             $table->unsignedBigInteger('article_id');
             $table->unsignedBigInteger('updated_by');
-
             $table->timestamps();
         });
     }

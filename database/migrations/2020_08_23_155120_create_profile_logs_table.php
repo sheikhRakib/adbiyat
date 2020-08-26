@@ -14,12 +14,10 @@ class CreateProfileLogsTable extends Migration
     public function up()
     {
         Schema::create('profile_logs', function (Blueprint $table) {
-            $table->id();
-
+            $table->increments('id');
             $table->unsignedBigInteger('user_id');
             $table->string('action');
             $table->string('data');
-
             $table->timestamps();
         });
     }
