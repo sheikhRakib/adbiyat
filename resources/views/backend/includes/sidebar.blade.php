@@ -17,6 +17,12 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ url('/activity') }}" class="nav-link {{ (request()->is('activity') ? 'active' : '') }}">
+                        <i class="nav-icon fas fa-clipboard-list"></i>
+                        <p>Activity Log</p>
+                    </a>
+                </li>
 
 
                 <li class="nav-item has-treeview {{ (request()->is('dealership*') ? 'menu-open' : '') }}">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\ProfileLog;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -66,12 +67,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'firstname' => $data['firstname'],
-            'lastname' => $data['lastname'],
-            'username' => $data['username'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'lastname'  => $data['lastname'],
+            'username'  => $data['username'],
+            'email'     => $data['email'],
+            'password'  => Hash::make($data['password']),
         ]);
+        
+        ProfileLog::create([
+            'user_id' => $user->id,
+            'action' => 'created',
+            'data' => 'new account',
+        ]);
+
+        return  $user;
     }
 }

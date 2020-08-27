@@ -29,7 +29,13 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 
+        'remember_token',
+    ];
+
+    protected $dates = [
+        'created_at',
+        'updated_at',
     ];
 
     /**
@@ -61,5 +67,9 @@ class User extends Authenticatable
         $f = ucfirst($this->firstname);
         $l = ucfirst($this->lastname);
         return "{$f} {$l}";
+    }
+    
+    public function getCreatedAttribute() {
+        return $this->created_at->toFormattedDateString();
     }
 }
