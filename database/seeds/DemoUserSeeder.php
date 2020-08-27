@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\ProfileLog;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -20,6 +21,11 @@ class DemoUserSeeder extends Seeder
             'email'     => 'raKib@mail.io',
             'password'  => Hash::make('12345'),
         ]);
+        ProfileLog::create([
+            'user_id' => $rakib->id,
+            'action' => 'created',
+            'data' => 'new account',
+        ]);
 
         $masud = User::create([
             'firstname' => 'Hasan',
@@ -27,6 +33,11 @@ class DemoUserSeeder extends Seeder
             'username'  => 'masud',
             'email'     => 'masud@mail.io',
             'password'  => Hash::make('12345'),
+        ]);
+        ProfileLog::create([
+            'user_id' => $masud->id,
+            'action' => 'created',
+            'data' => 'new account',
         ]);
     }
 }
