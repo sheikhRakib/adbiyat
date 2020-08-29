@@ -19,9 +19,8 @@ class CreateMessagesTable extends Migration
             $table->unsignedBigInteger('from');
             $table->string('message');
             $table->boolean('seen')->default(false);
-            $table->tinyInteger('is_archive')->default(0);
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

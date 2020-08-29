@@ -16,6 +16,7 @@
 
     <!-- Styles -->
     {!! Html::style('assets/frontend/css/app.css') !!}
+
     @yield('header-css')
 
 </head>

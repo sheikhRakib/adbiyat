@@ -6,25 +6,22 @@ Route::group(['namespace' => 'Dashboard','as' => 'admin.'], function () {
   Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 });
 
-;
+Route::group(['namespace' => 'Article','as' => 'admin.'], function () {
+  /*
+ * subscribe routes
+ */
+  Route::resource('/articles','ArticleController', ['names' => [
+      'index'     => 'article.index',
+      'create'    => 'article.create',
+      'store'     => 'article.store',
+      'edit'      => 'article.edit',
+      'update'    => 'article.update',
+      'show'      => 'article.show',
+      'destroy'   => 'article.destroy'
+  ]]);
+
 //
-// Route::group(['namespace' => 'Subscriber','as' => 'admin.'], function () {
-//   /*
-//  * subscribe routes
-//  */
-//   Route::get('/user/subscribers/list/{param}','SubscriberController@paramWiseList');
-//   Route::resource('/user/subscribers', 'SubscriberController', ['names' => [
-//       'index'     => 'user.subscriber.index',
-//       'create'    => 'user.subscriber.create',
-//       'store'     => 'user.subscriber.store',
-//       'edit'      => 'user.subscriber.edit',
-//       'update'    => 'user.subscriber.update',
-//       'show'      => 'user.subscriber.show',
-//       'destroy'   => 'user.subscriber.destroy'
-//   ]]);
-//
-//
-// });
+ });
 
 
 //
