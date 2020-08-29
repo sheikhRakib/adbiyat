@@ -3,7 +3,8 @@
 
 //Dashboard route
 Route::group(['namespace' => 'Dashboard','as' => 'admin.'], function () {
-  Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+	Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+	Route::get('/activity', 'DashboardController@activity')->name('activity');
 });
 
 Route::group(['namespace' => 'Article','as' => 'admin.'], function () {
