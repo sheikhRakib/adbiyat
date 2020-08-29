@@ -18,6 +18,24 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        ArticleCreated::class => [
+            ArticleCacheListener::class,
+        ],
+        ArticleUpdated::class => [
+            ArticleCacheListener::class,
+        ],
+        ArticleDeleted::class => [
+            ArticleCacheListener::class,
+        ],
+        UserCreated::class => [
+            UserCacheListener::class,
+        ],
+        UserUpdated::class => [
+            UserCacheListener::class,
+        ],
+        UserDeleted::class => [
+            UserCacheListener::class,
+        ],
     ];
 
     /**

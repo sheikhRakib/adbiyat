@@ -23,12 +23,12 @@ class CreateUsersTable extends Migration
             $table->string('sex')->nullable();
             $table->date('dob')->nullable();
             $table->string('display_picture')->nullable();
-            $table->boolean('is_active')->default(true);
-            $table->timestamp('email_verification_token')->nullable();
+            $table->boolean('status')->default(false);
+            $table->string('email_verification_token')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
