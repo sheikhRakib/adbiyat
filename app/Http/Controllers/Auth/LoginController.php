@@ -43,17 +43,17 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
     	$redirectPath = $this->redirectPath();
-      
+
     	ProfileLog::create([
 			'user_id' => $user->id,
 			'action'  => 'logged in',
 			'data'    => "from {$request->ip()}",
     	]);
-      	return redirect()->intended($redirectPath);
+    	return redirect()->intended($redirectPath);
     }
 
     protected function loggedOut(Request $request)
     {
-		return redirect()->route('login');
+	  	return redirect()->route('login');
     }
 }

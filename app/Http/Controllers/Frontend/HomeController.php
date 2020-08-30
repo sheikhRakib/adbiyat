@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\CompanyServiceCategory;
-use App\Models\Aricle;
+use App\Models\Article;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -20,11 +20,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-      $data['users'] = Cache::get('users', function () {
-             User :: orderBy('id','desc')->get();
+      $data['articles'] = Cache::get('articles', function () {
+            return  Article :: where('status',true)->orderBy('id','desc')->get();
       });
-        // $data = CommonDataController :: commonData();
-       return view('frontend.index',$data);
+       return view('frontend.index');
     }
 
 }

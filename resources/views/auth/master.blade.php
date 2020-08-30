@@ -21,7 +21,7 @@
         <!-- ========== Start header ========== -->
         @include('frontend.includes.header')
         <!-- ========== end header ========== -->
-        <div class="container my-4">
+        <div class="container mb-4">
             @yield('content')
         </div>
     </div>
