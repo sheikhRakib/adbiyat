@@ -16,7 +16,7 @@
     .login-card {
         height: 25rem;
         width: 25rem;
-        margin-top: 12rem;
+        margin-top: 9rem;
         margin-bottom: auto;
         background: #f39c12;
         position: relative;
@@ -60,7 +60,7 @@
         <!-- Login Form -->
         <div class="d-flex justify-content-center mt-5">
             {!! Form::open(['route'=>'login']) !!}
-            
+
             {{-- email --}}
             <div class="input-group mb-2">
                 {!! Form::email('email', null, ['class'=>$errors->has('email')?'form-control

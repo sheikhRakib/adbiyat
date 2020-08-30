@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Events\ArticleCreated;
+
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -18,23 +20,24 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-        ArticleCreated::class => [
-            ArticleCacheListener::class,
+
+        'App\Events\ArticleCreated' => [
+           'App\Listeners\ArticleCacheListener',
         ],
-        ArticleUpdated::class => [
-            ArticleCacheListener::class,
+        'App\Events\ArticleUpdated' => [
+           'App\Listeners\ArticleCacheListener',
         ],
-        ArticleDeleted::class => [
-            ArticleCacheListener::class,
+        'App\Events\ArticleDeleted' => [
+           'App\Listeners\ArticleCacheListener',
         ],
-        UserCreated::class => [
-            UserCacheListener::class,
+        'App\Events\UserCreated' => [
+           'App\Listeners\UserCacheListener',
         ],
-        UserUpdated::class => [
-            UserCacheListener::class,
+        'App\Events\UserUpdated' => [
+           'App\Listeners\UserCacheListener',
         ],
-        UserDeleted::class => [
-            UserCacheListener::class,
+        'App\Events\UserDeleted' => [
+           'App\Listeners\UserCacheListener',
         ],
     ];
 

@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Events\UserCreated;
+use App\Events\UserUpdated;
+use App\Events\UserDeleted;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -19,7 +22,7 @@ class User extends Authenticatable
         'firstname',
         'lastname',
         'username',
-        'email', 
+        'email',
         'password',
     ];
 
@@ -35,7 +38,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 
+        'password',
         'remember_token',
     ];
 
@@ -74,7 +77,7 @@ class User extends Authenticatable
         $l = ucfirst($this->lastname);
         return "{$f} {$l}";
     }
-    
+
     public function getCreatedAttribute() {
         return $this->created_at->toFormattedDateString();
     }
