@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\ProfileLog;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -41,12 +42,18 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
-      $redirectPath = $this->redirectPath();
-      return redirect()->intended($redirectPath);
+    	$redirectPath = $this->redirectPath();
+
+    	ProfileLog::create([
+			'user_id' => $user->id,
+			'action'  => 'logged in',
+			'data'    => "from {$request->ip()}",
+    	]);
+    	return redirect()->intended($redirectPath);
     }
 
     protected function loggedOut(Request $request)
     {
-        return redirect()->route('login');
+	  	return redirect()->route('login');
     }
 }

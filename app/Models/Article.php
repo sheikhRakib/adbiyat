@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Events\ArticleCreated;
+use App\Events\ArticleUpdated;
+use App\Events\ArticleDeleted;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 

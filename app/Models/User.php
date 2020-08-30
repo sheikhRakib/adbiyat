@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Events\UserCreated;
+use App\Events\UserUpdated;
+use App\Events\UserDeleted;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -16,7 +19,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'firstname',
+        'lastname',
+        'username',
+        'email',
+        'password',
     ];
 
     protected $dispatchesEvents = [
@@ -31,7 +38,13 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
+    ];
+
+    protected $dates = [
+        'created_at',
+        'updated_at',
     ];
 
     /**
@@ -42,4 +55,30 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Setter Functions
+     */
+    public function setUserNameAttribute($value) {
+        $this->attributes['username'] = strtolower($value);
+    }
+    public function setEmailAttribute($value) {
+        $this->attributes['email'] = strtolower($value);
+    }
+    public function setFirstNameAttribute($value) {
+        $this->attributes['firstname'] = strtolower($value);
+    }
+    public function setLastNameAttribute($value) {
+        $this->attributes['lastname'] = strtolower($value);
+    }
+
+    public function getFullNameAttribute() {
+        $f = ucfirst($this->firstname);
+        $l = ucfirst($this->lastname);
+        return "{$f} {$l}";
+    }
+
+    public function getCreatedAttribute() {
+        return $this->created_at->toFormattedDateString();
+    }
 }

@@ -27,7 +27,7 @@ class ArticleCacheListener
     public function handle($event)
     {
         cache()->forget('articles');
-        $articles = Article :: orderBy('id','desc')->get();
+        $articles = Article :: where('status',true)->orderBy('id','desc')->get();
         cache()->forever('articles',$articles);
     }
 }
