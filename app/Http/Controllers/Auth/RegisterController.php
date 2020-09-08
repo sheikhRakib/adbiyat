@@ -9,9 +9,13 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Spatie\Activitylog\Traits\LogsActivity;
+
 
 class RegisterController extends Controller
 {
+    use LogsActivity;
+
     /*
     |--------------------------------------------------------------------------
     | Register Controller
@@ -74,7 +78,7 @@ class RegisterController extends Controller
             'email'     => $data['email'],
             'password'  => Hash::make($data['password']),
         ]);
-        
+
         ProfileLog::create([
             'user_id' => $user->id,
             'action' => 'created',
