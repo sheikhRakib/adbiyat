@@ -7,9 +7,13 @@ use App\Models\ProfileLog;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Spatie\Activitylog\Traits\LogsActivity;
+
 
 class LoginController extends Controller
 {
+     use LogsActivity;
+
     /*
     |--------------------------------------------------------------------------
     | Login Controller
